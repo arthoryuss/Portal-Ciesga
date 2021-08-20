@@ -1,0 +1,32 @@
+
+          {% for formacao in formacoes %}
+        <div class="well4">
+          <div class='row'>
+            <div class='col-xs-10'>
+              <div class='col-xs-10'>
+            <h2>
+           {% if formacao.data_conclusao == NULL %}
+           {{ formacao }} - {{ formacao.instituicao }} - EM ANDAMENTO
+           {% else %}
+           {{ formacao }} - {{ formacao.instituicao }} - CONCLUÍDO
+           {% endif %}
+           </h2>
+            <div class="pure-controls">
+             <a href="{% url 'candidato:editar_formacao' formacao.id %}" 
+              class="pure-button-primary primary-button">Editar</a>
+             <a href="{% url 'candidato:excluir_formacao' formacao.id  %}" 
+               class="pure-button button-error">Excluir
+             </a>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+   			  {% empty %}
+            <aside-2 class="pure-u-1">
+                <p>Nenhuma formação adicionada</p>
+            </aside-2>
+          	{% endfor %}
+
+      
+        

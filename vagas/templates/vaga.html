@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+	<div>
+		''
+	</div>
+    <div class="l-box splash-text">
+      <h4 class="content-subhead">{{vaga.funcao}}</h4>
+  	</div>
+		<div class="pure-g-r content-ribbon">
+		    <div class="pure-u-1">
+		        <h1> Descrição da Vaga: </h1> <p>{{vaga.descricao}}</p>
+		        {% if vaga.salario == '' %}
+		        <p> Salário: A combinar </p>
+		        {% else %}
+		        <p> Salário: R$ {{vaga.salario}}</p>
+		        {% endif %}
+		        {% if vaga.confidencial == True %}
+		        <p> Empresa: Confidencial</p>
+		        {% else %}
+		        <p> Empresa: {{vaga.empregador.nome}} </p>
+		        {% endif %}
+		    </div>
+		</div>	
+		<div class="pure-g-r content-ribbon">
+		    <div class="pure-u-1">
+		        <h1> Requisitos </h1>
+		        <ul>
+		       	{% for requisito in requisitos %}
+		        <li>{{requisito}}</li>
+		        {% empty %}
+		        <li>Não há pré-requisitos para esta vaga</li>
+		        {% endfor %}
+		        </ul>
+		        <div class="pure-u-1">
+		        </div>
+				     <div class='col-xs-4 text-center'>
+		              <a href="{% url 'vagas:inscricao' vaga.id %}" class="pure-button-primary primary-button" role="button">Candidatar-se</a>
+		        	</div>
+		    </div>
+		</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "dashboard_candidato.html" %}
+{% load pretencoes_tag %}
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'candidato:pretencoes' %}"> Pretenções </a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+
+<form class="pure-form pure-form-stacked" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {% for field in form %}
+        <div class="pure-control-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Atualizar Pretenção</button>
+        </div>
+    </fieldset>
+</form>
+
+<div class="inner">
+    <h1>Minhas Pretenções</h1>
+</div>
+
+{% pretencoestag user %}
+{% endblock %}

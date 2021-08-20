@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1">
+        <h1>Fale conosco</h1>
+        <p>Você pode entrar em contato conosco tanto por e-mail como pelas redes sociais, abaixo seguem os links para contato:</p>
+        <h4>Links</h4>
+        <ul>
+            <li>E-mail: <a href="">desenvolvimento@saogoncalo.rn.gov.br</a></li>
+            <li>Telefone: <a href="">(84) 99105-3276</a></li>
+             <li>Facebook: <a href=""></a></li>
+            <li>Endereço: <a href="">Av Engenheiro Roberto Freire – Nº1000 / Santo Antônio do Potengi - RN</a></li>
+        </ul>
+    </div>
+</div>
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1">
+        <h1>Dúvidas/Sugestões</h1>
+        {% if is_valid %}
+        <p>Sua mensagem foi enviada com sucesso. Obrigado por falar conosco</p>
+        {% endif %}
+        <form action="#contato" class="pure-form pure-form-aligned" method="post">
+            {% csrf_token %}
+            <fieldset>
+                {% for field in form %}
+                <div class="pure-control-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div class="pure-controls">
+                    <button type="submit" class="pure-button pure-button-primary">Enviar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

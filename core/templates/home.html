@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="splash">
+    <div class="pure-g-r">
+        <div class="pure-u-1">
+            <div class="l-box splash-text">
+                <h1 class="splash-head">
+                    Uma Plataforma de apoio ao trabalhador de SGA-RN
+                </h1>
+                <h2 class="splash-subhead">
+                    O Portal CIESGA realiza intermediação entre empresas que precisam de mão de obra e profissionais que procuram emprego de forma totalmente transparente.
+                </h2>
+                <p>
+                    <a href="{% url 'core:saiba_mais' %}" class="pure-button-primary primary-button">Saiba mais</a>
+                    <a href="{% url 'usuario:choice_register' %}" class="pure-button-primary secundary-button">Cadastre-se</a>
+                </p>
+            </div>
+        </div> 
+    </div>
+</div>
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-2-3">
+        <div class="l-box">
+            <h4 class="content-subhead">Banco de currículos</h4>
+            <h3>Registre seu currículo</h3>
+            <p>
+                O Portal CIESGA tem um sistema simples e prático para que o trabalhador de São Gonçalo do Amarante divulgue seu currículo e concorra a vagas de emprego que nossa cidade disponibiliza.
+            </p>
+        </div>
+    </div>
+    <div class="pure-u-1-3">
+        <div class="l-box">
+            <img src="http://placehold.it/400x250"
+                 alt="Banco de currículos.">
+        </div>
+    </div>
+</div>
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1-3">
+        <div class="l-box">
+            <img src="http://placehold.it/400x250"
+                 alt="Catálogo de vagas">
+        </div>
+    </div>  
+    <div class="pure-u-2-3">
+        <div class="l-box">
+            <h4 class="content-subhead">Catálogo de vagas</h4>
+            <h3>Encontre a vaga com seu perfil</h3>
+            <p>
+                No Portal CIESGA você pode consultar as vagas de trabalho que estão disponíveis e candidatar-se.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-2-3">
+        <div class="l-box">
+            <h4 class="content-subhead">Empregador</h4>
+            <h3>Crie vagas e tenha acesso ao nosso banco de currículos</h3>
+            <p>
+                Você pode divulgar vagas de empregos (anonimamente ou não) em nosso portal e ter acesso ao nosso completo banco de currículos para selecionar o melhor profissional para o sua empresa.
+            </p>
+        </div>
+    </div>
+    <div class="pure-u-1-3">
+        <div class="l-box">
+            <img src="{% static 'image/4.png' %}"
+                 alt="Empregador">
+        </div>
+    </div>
+</div>
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1-3">
+        <div class="l-box">
+            <img src="{% static 'image/6.jpg' %}"
+                 alt="Cursos">
+        </div>
+    </div>
+    <div class="pure-u-2-3">
+        <div class="l-box">
+            <h4 class="content-subhead">Cursos (EM BREVE)</h4>
+            <h3>Se inscreva em cursos através do nosso portal</h3>
+            <p>
+                Em breve o Portal CIESGA disponibilizará inscrições em cursos presenciais e online para manter você sempre praparado para o mercado de trabalho.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="splash">
+    <div class="pure-g-r">
+        <div class="pure-u-1">
+            <div class="l-box splash-text">
+                <h1 class="splash-head">
+                    Uma Plataforma de apoio ao trabalhador de SGA-RN
+                </h1>
+                <h2 class="splash-subhead">
+                    O Portal CIESGA realiza intermediação entre empresas que precisam de mão de obra e profissionais que procuram emprego de forma totalmente transparente.
+
+                </h2>
+                <p>
+                    <a href="{% url 'core:home' %}" class="pure-button-primary primary-button">Início</a>
+                    <a href="{% url 'usuario:choice_register' %}" class="pure-button-primary secundary-button">Cadastre-se</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u">
+        <div class="l-box">
+        	<h4 class="content-subhead">Portal CIESGA</h4>
+        	   	<pre class="pure-u" align="justify">
+	Com esta ferramenta pretendemos tornar o processo de encontrar uma vaga de emprego muito mais fácil e transparente, tanto para o cidadão quanto para a empresa que precisa de mão de obra. A Prefeitura de São Gonçalo do Amarante tem colocado seus esforços em trazer novas oportunidades e abrir novas vagas aqui mesmo no município, para que seus moradores não tenham que se deslocar para outras cidades em busca de emprego.<br>
+	Aqui o cidadão fará seu cadastro, com todas os seus dados, e informará suas áreas de interesse profissional. As empresas também farão seus cadastros e poderão disponibilizar vagas a serem preenchidas. Se o candidato for da área de interesse da empresa e atender seus requisitos, automaticamente estará concorrendo àquela vaga. Se não for, mesmo assim poderá tentar concorrer, obviamente não tendo tantas chances de conseguir preenchê-la. Além disso, candidatos e empresas poderão acompanhar vagas abertas, resumo de outros candidatos, quantidade de profissionais concorrendo a uma vaga, dentre outras funcionalidades.<br>
+	Queremos que todos tenham certeza que estão sendo respeitados os critérios de seleção das empresas. Que a administração pública não interfere no processo, garantindo que candidatos às vagas de emprego no município estejam sendo aproveitados de acordo com suas capacidades profissionais. Além disso, através dos cadastros é possível avaliar a realidade do mercado de trabalho local e as necessidades de cursos de qualificação para a população.
+			</pre>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

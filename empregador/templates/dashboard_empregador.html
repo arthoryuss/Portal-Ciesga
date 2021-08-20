@@ -1,0 +1,73 @@
+{% extends "dashboard.html" %}
+
+
+            {% block breadcrumb %}
+            <li><a href="{% url 'usuario:dashboard' %}">Meu Painel</a></li>
+            {% endblock %}
+    <div class="pure-u-1-3">
+        <div class="pure-menu pure-menu-open">
+            <ul>
+                <li class="pure-menu-heading">
+                    Bem-vindo, {{ user }}
+                </li>
+                {% block menu_options %}
+                <li class="pure-menu-heading">Dados</li>
+                <li>
+                    <a href="{% url 'empregador:info_basica2' %}">
+                    <i class="fa fa-user"></i>
+                    Informações Básicas
+                    </a>
+                </li>
+
+                <li class="pure-menu-heading">Vagas de Emprego</li>
+                <li>
+                    <a href="{% url 'empregador:cadastrar_vaga' %}">
+                    <i class="fa fa-plus-circle"></i>
+                    Cadastrar nova vaga
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'empregador:minhas_vagas' %}">
+                    <i class="fa fa-handshake-o"></i>
+                    Minhas vagas
+                    </a>
+                </li>
+                <li class="pure-menu-heading">Configurações de Conta</li>
+                <li>
+                    <a href="{% url 'usuario:edit_password' %}">
+                    <i class="fa fa-lock"></i>
+                    Editar Senha
+                    </a>
+                </li>
+            </ul>
+                {% endblock %}
+
+            {% block dashboard_content %}
+            <h1>Painel de Controle</h1>
+                <p align="justify">
+                    Além da divulgação de vagas O CIESGA dispõe de uma equipe bastante experiente que pode auxiliar em pré-seleção de candidatos, na captação de profissionais de acordo com o perfil exigido pela contratante para ocupação das vagas abertas; cessão de salas para entrevistas coletivas e individuais; e auditório com capacidade para 40 pessoas na realização de capacitações e treinamentos.
+                    Para esses e outros serviços, entre em contato conosco.
+                    <br>
+                    <br>
+                    A fim de contribuir com o crescimento do município, pedimos encarecidamente que preencham as informações sobre sua empresa e as atualizem sempre que possível. Se tiver alguma dúvida de como utilizar a plataforma assista a um tutorial clicando <a href="">Aqui</a>.
+                </p> 
+                <p align="justify">
+                    <i class="fa fa-exclamation-circle"></i> ATENÇÃO <i class="fa fa-exclamation-circle"></i> De acordo com a Constituição Federal, é proibido anunciar vagas com cunho discriminatório, tais como: sexo, idade, raça, cor, religião, estado civil, orientação sexual, nacionalidade ou comprovação de experiência profissional superior a seis meses.
+                <br>
+                <br>
+                    Mais informações em:
+                <br>
+                <br>
+
+                    Artigo 3º da CF, inciso <a href="http://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm#3IV" target="_blank">IV</a>.
+                <br>
+                    Artigo 5º da CF, incisos <a href="http://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm#5I" target="_blank">I</a>, <a href="http://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm#5VIII" target="_blank">VIII</a> e <a href="http://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm#5X" target="_blank">X</a> .
+                <br>
+                    Artigo 7º da CF, incisos <a href="http://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm#7XXX" target="_blank">XXX</a>, <a href="http://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm#7XXXI" target="_blank">XXXI</a> e <a href="http://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm#7XXXII" target="_blank">XXXII</a>.
+                <br>
+                <br>
+                    * Vagas que contenham termos discriminatórios serão automaticamente bloqueadas.
+                </p>
+            </div>
+        </div>
+            {% endblock %}

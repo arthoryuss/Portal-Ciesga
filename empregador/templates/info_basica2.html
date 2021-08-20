@@ -1,0 +1,37 @@
+{% extends "dashboard_empregador.html" %}
+
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'empregador:info_basica2' %}">Editar Conta</a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+<li>Os campos marcados com um asterisco * são de preenchimento obrigatório.</li>
+
+<form class="pure-form pure-form-stacked" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {{ form2.non_field_errors }}
+        {{ form1.non_field_errors }}
+        {% for field in form2 %}
+        <div class="pure-control-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+        {% for field in form1 %}
+        <div class="pure-control-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Salvar Modificações</button>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}

@@ -1,0 +1,69 @@
+    {% for vaga in vagas %}
+    <div class="well3" id='{{ vaga.id }}'>
+            <div class='row'>
+              <div class='col-xs-10'>
+                <div class='col-xs-10'>
+                  <h1 class="splash-head">
+                    Emprego para {{ vaga.funcao }}
+                  </h1>
+                </div>
+                <div class='col-xs-8'>
+                  <ul class="list-inline">
+                    <li>Local: {{ vaga.local }}</li>
+                    {% if vaga.confidencial == True %}
+                    <li>Empresa: Confidencial </li>
+                    {% else %}
+                    <li>Empresa: {{ vaga.empregador.nome }}</li>
+                    {% endif %}
+                    {% if vaga.escolaridade == '' %}
+                    <li>Escolaridade Exigida: Nenhuma </li>
+                    {% else %}
+                    <li>Escolaridade Exigida: {{ vaga.escolaridade }} </li>
+                    {% endif %}
+                    <li>Criado: {{ vaga.data_criacao | date:"d M Y"}}</li>
+                  </ul>
+                </div>
+                <div class='col-xs-4 text-center'>
+                  <a href="{% url 'vagas:requisitos' vaga.id %}" class="pure-button-primary primary-button" role="button">Ver Vaga</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <div class="pure-u-1 text-center">
+              <h3>Não temos nenhuma vaga cadastrada no momento</h3>
+          </div>
+    {% endfor %}
+
+     <center class="pagination">
+            <ul class="pagination">
+            <span class="step-links">
+            {% if vagas.has_previous %}
+                <a id="prev" href="?page={{ vagas.previous_page_number }}">&laquo;</a>&emsp;
+            {% else %}
+                    <class="disabled"><span>&laquo;</span>&emsp;
+            {% endif %}
+
+            <span class="current">
+                {% for i in page_range %}
+                    {% if vagas.number == i %}
+                            <a class= "home-menu" href="?page={{ i }}">{{ i }}
+                                <span class="sr-only"></span>
+                            </a>  &emsp;
+                    {% else %}
+                            <a href="?page={{ i }}">
+                                {{ i }} 
+                            </a>  &emsp;
+                    {% endif %}
+                {% endfor %}
+            </span>
+
+            {% if vagas.has_next %}
+                <a id="next" href="?page={{ vagas.next_page_number }}">&raquo;</a>
+            {% else %}
+               <class="disabled"><span>&raquo;</span>
+            {% endif %}
+          </ul>
+    }
+    }
+    </center>

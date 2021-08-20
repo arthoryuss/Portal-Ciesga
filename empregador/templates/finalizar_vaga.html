@@ -1,0 +1,25 @@
+{% extends "dashboard_empregador.html" %}
+{% block dashboard_content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h3>Você deseja realmente excluir esta vaga?</h3>
+    <li>Antes de finalizar a operação, a fim de contribuir com o crescimento do município, seria possível informar o número de candidatos que foram chamados para entrevistas nesta vaga?</li>
+    <br>
+                {{ form.non_field_errors }}
+
+                {% for field in form %}
+                <div class="pure-control-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+                {% endfor %}
+    <br>
+
+    <div class="pure-controls">
+        <button type="submit" class="pure-button button-error">Confirmar</button>
+        <a href="{% url 'empregador:minhas_vagas' %}" class="pure-button">Voltar</a>
+    </div>
+
+</form>
+{% endblock %}

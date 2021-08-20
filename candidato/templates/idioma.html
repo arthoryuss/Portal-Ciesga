@@ -1,0 +1,36 @@
+{% extends "dashboard_candidato.html" %}
+{% load idioma_tag %}
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'candidato:idioma' %}"> Idiomas </a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+
+<h2 class="content-subhead">Idiomas</h2>
+
+<form class="pure-form pure-form-stacked" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {% for field in form %}
+        <div class="pure-control-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.help_text }}
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Adicionar Idioma</button>
+        </div>
+    </fieldset>
+</form>
+
+<div class="inner">
+    <h1>Meus Idiomas</h1>
+</div>
+
+{% idiomastag user %}
+
+{% endblock %}

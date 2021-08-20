@@ -1,0 +1,39 @@
+{% for vaga in vagas %}
+<div class="well4" id='{{ vaga.id }}'>
+        <div class='row'>
+          <div class='col-xs-10'>
+            <div class='col-xs-10'>
+              <h1 class="splash-head">
+              {{ vaga.funcao }}
+              </h1>
+            </div>
+            <div class='col-xs-8'>
+              <ul class="list-inline">
+                <li>Local: {{ vaga.local }}</li>
+                {% if vaga.confidencial == True %}
+                <li>Empresa: Confidencial </li>
+                {% else %}
+                <li>Empresa: {{ vaga.empregador.nome }}</li>
+                {% endif %}
+                <li>Criado: {{ vaga.data_criacao | date:"d M Y"}}</li>
+              </ul>
+            </div>
+            <div class='col-xs-4'>
+              <a href="{% url 'empregador:ver_inscritos' vaga.id %}" class="pure-button button-success" role="button">Ver inscritos</a>
+              {% if vaga.status %}
+              <a href="{% url 'empregador:status_vaga' vaga.id %}" class="pure-button button-warning" role="button">Encerrar</a>
+              {% else %}
+              <a href="{% url 'empregador:status_vaga' vaga.id %}" class="pure-button-primary" role="button"> Ativar</a>
+              {% endif %}
+              <a href="{% url 'empregador:editar_vaga' vaga.id %}" class="pure-button button-secondary" role="button">Editar</a>
+              <a href="{% url 'empregador:excluir_vaga' vaga.id %}" class="pure-button button-error" role="button">Excluir</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="pure-u-1 text-center">
+          <h3>Você ainda não cadastrou nenhuma vaga</h3>
+      </div>
+
+{% endfor %}

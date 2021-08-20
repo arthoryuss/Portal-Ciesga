@@ -1,0 +1,53 @@
+{% extends "dashboard_empregador.html" %}
+{% load crispy_forms_tags %}
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'empregador:cadastrar_vaga' %}"> Cadastrar Vaga </a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+
+    <script>
+        $(document).ready(function(){
+            $("#add-item").click(function(ev) {
+                ev.preventDefault();
+                var count = $('#order').children().length;
+                var tmplMarkup = $("#item-order").html();
+                // some animate to scroll to view our new form
+                $('html, body').animate({
+                    scrollTop: $("#add-item").position().top-200
+                }, 800);
+            });
+        });
+    </script>
+
+<form class="pure-form pure-form-stacked" method="post">
+    {% csrf_token %}            
+     {{ forms|crispy }}
+     {{ formset.management_form }} 
+
+        <form action="" method="POST">
+                <div id="order" class="form-inline form-group">
+                    {% for item_order_form in formset %}
+                        <div id="item-{{ forloop.counter0 }}">
+                            {{ item_order_form }}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <a class="pure-button" id="add-item"><i class="fa fa-plus"></i> Add Requisito</a>
+                <div class="form-inline buttons">
+                <br>
+                <button type="submit" class="pure-button pure-button-primary">Salvar Alterações</button>
+                </div>
+            </form>
+    </div>    
+
+    <script type="text/html" id="item-order">
+        <div id="item-__prefix__" style="margin-top: 10px">
+                {{ formset.empty_form|crispy  }}
+        </div>
+    </script>
+
+{% endblock %}

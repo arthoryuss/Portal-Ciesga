@@ -1,0 +1,76 @@
+{% extends "dashboard_empregador.html" %}
+{% block breadcrumb %}
+
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'empregador:minhas_vagas' %}"> Inscritos </a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+<aside>
+<form method="GET" class="pure-form" action=".">
+	&emsp;&emsp;	Escolaridade:
+    <select id ="escolaridade" name="escolaridade" style = "font-size: 90%; max-width: 200px;"> 
+      <option value=></option>	
+	  <option value="Fundamental incompleto">Fundamental incompleto</option>
+	  <option value="Fundamental completo">Fundamental completo</option>
+	  <option value="Medio incompleto">Médio incompleto</option>
+	  <option value="Medio completo">Médio completo</option>
+	  <option value="Tecnico incompleto">Técnico incompleto</option>
+	  <option value="Tecnico completo">Técnico completo</option>
+	  <option value="Superior incompleto">Superior incompleto</option>
+	  <option value="Superior completo">Superior completo</option>
+	  <option value="Pos-Graduacao">Pós-Graduação</option>
+	  <option value="Mestrado">Mestrado</option>
+	  <option value="Doutorado">Doutorado</option>
+	  <option value="PHD">PHD</option>
+	</select>
+	Gênero:
+	<select i= "genero" name="genero" style = "font-size: 90%; max-width: 140px;">
+	  <option value=></option>
+	  <option value="Masculino">Masculino</option>
+	  <option value="Feminino">Feminino</option>
+	  <option value="Outros">Outros</option>
+	</select>
+	Deficiência:
+	<select i= "deficiente" name="deficiente" style = "font-size: 90%; max-width: 120px;">
+	  <option value=></option>
+	  <option value="Sim">PCD</option>
+	</select>&emsp;
+	<button type="submit" class="pure-button button-success" style = "font-size: 100%;">Filtrar</button>
+</form>
+</aside>
+<br>
+
+<table border="1px" cellpadding="6px" cellspacing="0" ID="alter">
+	<tr class='dif'> 
+		<th> NOME </th>
+		<th> E-MAIL </th>
+		<th> TELEFONE </th>
+		<th> ESCOLARIDADE </th>
+		<th> BAIRRO  </th>
+		<th> CIDADE </th>
+		<th> UF </th>
+		<th> DEFICIENTE? </th>
+		<th> MAIS DETALHES </th>
+	</tr>
+{% for candidatura in candidaturas %}
+	<tr> 
+		<td>{{candidatura.candidato.user.name}} </td>
+		<td>{{candidatura.candidato.user.email}} </td>
+		<td>{{candidatura.candidato.tel1}} </td>
+		<td>{{candidatura.candidato.escolaridade}} </td>
+		<td>{{candidatura.candidato.bairro}} </td>
+		<td>{{candidatura.candidato.cidade}} </td>
+		<td>{{candidatura.candidato.uf}} </td>
+		<td>{{candidatura.candidato.deficiente}} </td>
+		<td> <a href="{% url 'empregador:detalhes_candidato' candidatura.candidato.id %}">Ver</a> </td>
+	</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
+
+
+

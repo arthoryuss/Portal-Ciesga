@@ -1,0 +1,15 @@
+{% extends "dashboard_empregador.html" %}
+{% load minhas_vagas_tag %}
+{% block breadcrumb %}
+
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'empregador:minhas_vagas' %}"> Minhas Vagas </a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+<li> Encerrar/Ativar: Retira ou inclui a vaga no mural, sem excluí-la. </li>
+<li> Excluir: Exclui a vaga, finalizando definitivamente o processo seletivo. </li>
+{% minhasvagastag user %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "dashboard_candidato.html" %}
+{% load minhas_candidaturas_tag %}
+{% block breadcrumb %}
+
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'candidato:minhas_candidaturas' %}"> Minhas Candidaturas </a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+
+{% minhascandidaturastag user %}
+
+{% endblock %}

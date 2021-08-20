@@ -1,0 +1,72 @@
+{% extends "dashboard_candidato.html" %}
+{% load formacoes_tag %}
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'candidato:formacao' %}"> Formações </a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+
+<script language="JavaScript" type="text/javascript">
+   function dateMask(inputData, e){
+
+                    var tecla;
+
+                    if(document.all) // Internet Explorer
+                    tecla = event.keyCode;
+                    else //Outros Browsers
+                    tecla = e.which;
+
+                    if(tecla >= 47 && tecla < 58){ // numeros de 0 a 9 e '/'
+                    var data = inputData.value;
+
+                    //se for um numero coloca no input
+                    if(tecla > 47 && tecla < 58){
+                    if (data.length == 2 || data.length == 5){
+                    data += '/';
+
+                    }
+                    }else if(tecla == 47){ //se for a barra, so deixa colocar se estiver na posicao certa
+                    if (data.length != 2 && data.length != 5){
+                    return false;
+                    }
+                    }
+                    //atualiza o input da data
+                    inputData.value = data;
+                    return true;
+
+                    }else if(tecla == 8 || tecla == 0) // Backspace, Delete e setas direcionais(para mover o cursor, apenas para FF)
+                    return true;
+                    else
+                    return false;
+                    }
+                    /////////////////////////////////////
+</script>
+
+<h2 class="content-subhead">Formações</h2>
+
+<form class="pure-form pure-form-stacked" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {% for field in form %}
+        <div class="pure-control-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.help_text }}
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Adicionar Formação</button>
+        </div>
+    </fieldset>
+</form>
+
+<div class="inner">
+    <h1>Minhas Formações</h1>
+</div>
+
+{% formacoestag user %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <div class="pure-g-r">
+        <div class="pure-u-1">
+            <div class="l-box splash-text">
+                <h1 class="splash-head">
+                    Escolha abaixo o tipo de conta você dejesa criar:
+                </h1>
+                    <a href="{% url 'usuario:register' %}" class="pure-button-primary primary-button">Candidato</a>
+                    <a href="{% url 'usuario:register_empregador' %}" class="pure-button-primary primary-button">Empresa</a>
+             </div>
+
+
+               
+             
+{% endblock %}

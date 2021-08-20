@@ -1,0 +1,104 @@
+{% extends "dashboard_empregador.html" %}
+{% block breadcrumb %}
+
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'empregador:minhas_vagas' %}"> Inscritos </a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+
+<div class="pure-g-r content-ribbon">
+		    <div class="pure-u-1">
+		        <h1> Informações Básicas </h1>
+		        <ul>
+		        <li>Nome: {{candidato.user.name}}</li>
+		        <li>E-mail: {{candidato.user.email}}</li>
+		        <li>Data de Nascimento: {{candidato.data_nascimento}}</li>
+		        <li>Tel(1): {{candidato.tel1}}</li>
+		        <li>Tel(2): {{candidato.tel2}}</li>
+		        <li>Escolaridade: {{candidato.escolaridade}}</li>
+		        <li>Habilitação: {{candidato.habilitacao}}</li>
+		        <li>Logradouro: {{candidato.logradouro}}</li>
+		        <li>Número: {{candidato.numeroLog}}</li>
+		        <li>Bairro: {{candidato.bairro}}</li>
+		        <li>CEP: {{candidato.cep}}</li>
+		        <li>Cidade: {{candidato.cidade}}</li>
+		        <li>UF: {{candidato.uf}}</li>
+		        <li>Estado Civil: {{candidato.estado_civil}}</li>
+		        <li>Gênero: {{candidato.genero}}</li>
+		        <li>Possui deficiência?: {{candidato.deficiente}}</li>
+		        </ul>
+		    </div>
+		    <div class="pure-u-1">
+		        <h1> Formações </h1>
+		        {% for formacao in formacoes %}
+		        <ul>
+		        {% if formacao.data_conclusao == NULL %}
+		        <li>{{formacao.grau}} em {{formacao.curso}} no(a) {{formacao.instituicao}} em andamento desde {{formacao.data_entrada}}.</li>
+		        {% else %}
+		        <li>{{formacao.grau}} em {{formacao.curso}} no(a) {{formacao.instituicao}} concluído em {{formacao.data_conclusao}}.</li>
+		        {% endif %}
+		        </ul>
+		    	{% empty %}
+		   	<ul>
+		        <li>O candidato não informou nenhuma formação</li>
+		    </ul>
+		   	 {% endfor %}
+		   	</div>
+		     
+		    <div class="pure-u-1">
+		        <h1> Experiências </h1>
+		        {% for experiencia in experiencias %}
+		        <ul>
+		        <li>Empresa: {{experiencia.empresa}}</li>
+		        <li>Cargo: {{experiencia.cargo}}</li>
+		        <li>Descrição da atividade: {{experiencia.descricao}}</li>
+		        <li>Data da contratação: {{experiencia.data_entrada}}</li>
+		        {% if experiencia.data_saida == NULL %}
+		        <li>Data da saída: Em atividade</li>
+		        {% else %}
+		        <li>Data da saída: {{experiencia.data_saida}}</li>
+		        {% endif %}
+		        </ul>
+		    	<br>
+		   	{% empty %}
+		   	<ul>
+		        <li>O candidato não informou nenhuma experiência.</li>
+		    </ul>
+		    {% endfor %}
+		    </div>
+
+		    <div class="pure-u-1">
+		        <h1> Cursos </h1>
+		        {% for curso in cursos %}
+			       <ul>
+		        {% if curso.data_saida == NULL %}
+		        <li>{{curso.tipo}} em/sobre {{curso.curso}} no(a) {{curso.instituicao}} com duração de {{curso.duracao}} em andamento desde {{curso.data_entrada}}.</li>
+		        {% else %}
+		        <li>{{curso.tipo}} em/sobre {{curso.curso}} no(a) {{curso.instituicao}} com duração de {{curso.duracao}}h concluído em {{curso.data_saida}}.</li>
+		        {% endif %}
+		        </ul>
+		    {% empty %}
+		   	<ul>
+		        <li>O candidato não informou nenhum curso</li>
+		    </ul>
+		   	{% endfor %}
+		   	</div>
+
+		   	<div class="pure-u-1">
+		        <h1> Idiomas </h1>
+		        {% for idioma in idiomas %}
+		        <ul>
+		        <li>{{idioma.idioma}} {{idioma.nivel}}</li>
+		        </ul>
+		  	{% empty %}
+		  	<ul>
+		        <li>O candidato não informou conhecimento em outras línguas.</li>
+		    </ul>
+		    {% endfor %}
+		   </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% for candidatura in tag %}
+<div class="well4" id='{{ vaga.id }}'>
+        <div class='row'>
+          <div class='col-xs-10'>
+            <div class='col-xs-10'>
+              <h1 class="splash-head">
+              {{ candidatura.vaga.funcao }}
+              </h1>
+            </div>
+            <div class='col-xs-8'>
+              <ul class="list-inline">
+                <li>Local: {{ candidatura.vaga.local }}</li>
+                {% if candidatura.vaga.confidencial == True %}
+                <li>Empresa: Confidencial </li>
+                {% else %}
+                <li>Empresa: {{ candidatura.vaga.empregador.nome }}</li>
+                {% endif %}
+                <li>Criado: {{ candidatura.vaga.data_criacao | date:"d M Y"}}</li>
+              </ul>
+            </div>
+            <div class='col-xs-4'>
+              <a href="{% url 'candidato:excluir_candidatura' candidatura.id %}" class="pure-button button-error" role="button"> Cancelar Inscrição</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="pure-u-1 text-center">
+          <h3>Você não possui candidaturas ativas</h3>
+      </div>
+
+{% endfor %}
